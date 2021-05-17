@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\ADRIA\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\ADRIA\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_M'sK Project.-359739669.00" t="ExcludeRecursive" />
+    <e p="J:\Escritorio_2\Unity\MK\M'sK Project" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="_Scripts" t="Include">
+          <e p="BackgroundRandomizer.cs" t="Include" />
+          <e p="Enemy Scripts" t="Include">
+            <e p="EnemyBaseClass.cs" t="Include" />
+            <e p="EnemySpawner.cs" t="Include" />
+            <e p="EnemySpawnPoint.cs" t="Include" />
+          </e>
+          <e p="GameManager.cs" t="Include" />
+          <e p="KnifeController.cs" t="Include" />
+          <e p="PlayerController.cs" t="Include" />
+        </e>
+      </e>
+      <e p="M'sK Project.sln" t="IncludeFlat" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>
