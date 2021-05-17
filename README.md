@@ -1,2 +1,4 @@
 # Octagon Project
- Small Unity Game
+ Small Unity Game made by Adrià Sellarés (AdriaSeSa)
+
+
