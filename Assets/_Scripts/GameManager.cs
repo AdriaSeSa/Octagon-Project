@@ -6,27 +6,29 @@ using NUnit.Framework;
 using NUnit.Framework.Internal;
 using UnityEditor.VersionControl;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
-    public enum EnemySpawns
-    {
-        DOWN= 0,
-        UP = 1, 
-        RIGHT = 2,
-        LEFT= 3,
-        DOWN_RIGHT= 4,
-        DOWN_LEFT = 5,
-        UP_RIGHT = 6,
-        UP_LEFT = 7
-    }
+    /* DOWN= 0,
+     UP = 1, 
+     RIGHT = 2,
+     LEFT= 3,
+     DOWN_RIGHT= 4,
+     DOWN_LEFT = 5,
+     UP_RIGHT = 6,
+     UP_LEFT = 7*/
 
     private EnemySpawner _enemySpawner;
 
-    [SerializeField] private  List<List<int>> _enemyPatterns = new List<List<int>>();
+    private  List<List<int>> _enemyPatterns = new List<List<int>>();
+
+    private bool isGameOver;
     
-    private IEnumerator waveSpawning;
+    public IEnumerator waveSpawning;
+
+    public Canvas gameOverCanvas;
     private void Start()
     {
         _enemySpawner = FindObjectOfType<EnemySpawner>();
@@ -43,19 +45,51 @@ public class GameManager : MonoBehaviour
     
     private void Update()
     {
-        if (waveSpawning == null)
+        if (!isGameOver)
         {
-            waveSpawning = WaveSpawning();
-            StartCoroutine(WaveSpawning());
+            CheckEnemiesSpawn();
+            if (waveSpawning == null)
+            {
+                waveSpawning = WaveSpawning();
+                StartCoroutine(WaveSpawning());
+            }
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);    //Reload current Scene
+            } 
+            else if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                //TODO: Charge Main Menu Scene
+            }
         }
     }
 
     private IEnumerator WaveSpawning()
     {
-
-        _enemySpawner.SpawnEnemyWave(_enemyPatterns[Random.Range(0,_enemyPatterns.Count)], 1.0f);
-        
-        yield return new WaitForSecondsRealtime(7.0f);
+        int temp = Random.Range(0, _enemyPatterns.Count);
+        _enemySpawner.SpawnEnemyWave(_enemyPatterns[temp], 1.0f);
+        Debug.Log(temp);
+        yield return new WaitUntil(CheckEnemiesSpawn);
         waveSpawning = null;
+    }
+
+    private bool CheckEnemiesSpawn()
+    {
+        if (_enemySpawner._spawnEnemies == null)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public void PlayerDies()
+    {
+        _enemySpawner.StopEnemies();
+        gameOverCanvas.gameObject.SetActive(true);
+        isGameOver = true;
     }
 }

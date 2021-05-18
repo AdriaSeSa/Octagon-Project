@@ -7,7 +7,7 @@ using UnityEngine.Serialization;
 public class EnemyBaseClass : MonoBehaviour
 {
     [SerializeField]
-    private int speed;
+    public int speed;
     [SerializeField]
     private int xBounds = 8;
     [SerializeField]

@@ -11,7 +11,8 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
     private int _currentSprite = 0;
     private IEnumerator _invulnerabilityTime;
-
+    private int playerLifes = 3;
+    private GameManager _gameManager;
     
     public SpriteRenderer shieldSpriteRenderer;
     public Sprite[] shieldSprites = new Sprite[3];
@@ -20,6 +21,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _gameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -85,13 +87,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            if (_currentSprite != 2 && _invulnerabilityTime == null)
-            {
-                _invulnerabilityTime = InvulnerabilityTime();
-                StartCoroutine(InvulnerabilityTime());
-                UpdateSprite(); 
-            }
-            else Die();
+            CheckEnemyInteraction();
         }
     }
 
@@ -104,9 +100,24 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void CheckEnemyInteraction()
+    {
+        if (_invulnerabilityTime == null)
+        {
+            if (playerLifes != 1)
+            {
+                _invulnerabilityTime = InvulnerabilityTime();
+                StartCoroutine(InvulnerabilityTime());
+                UpdateSprite();
+                playerLifes--;
+            }
+            else Die();
+        }
+    }
+
     private void Die()
     {
-        
+        _gameManager.PlayerDies();
     }
 
     IEnumerator InvulnerabilityTime()

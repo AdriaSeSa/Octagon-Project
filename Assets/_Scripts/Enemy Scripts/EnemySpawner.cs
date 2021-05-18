@@ -9,11 +9,12 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private List<EnemyBaseClass> enemiesPool;
 
-    private IEnumerator _spawnEnemies;
+    public IEnumerator _spawnEnemies;
     
     [SerializeField]
     public EnemySpawnPoint[] spawnPoints = new EnemySpawnPoint[8];
-    
+
+    public bool isSpawningDone;
 
 
     /// <summary>
@@ -25,6 +26,7 @@ public class EnemySpawner : MonoBehaviour
     {
         if (_spawnEnemies == null)
         {
+            isSpawningDone = false;
             _spawnEnemies = SpawnWave(spawnPoint, time);
             StartCoroutine(SpawnWave(spawnPoint, time));
         }
@@ -44,7 +46,16 @@ public class EnemySpawner : MonoBehaviour
             yield return new WaitForSecondsRealtime(time);
         }
 
+        isSpawningDone = true;
         _spawnEnemies = null;
 
+    }
+
+    public void StopEnemies()
+    {
+        foreach (var enemy in enemiesPool)
+        {
+            enemy.speed = 0;
+        }
     }
 }
