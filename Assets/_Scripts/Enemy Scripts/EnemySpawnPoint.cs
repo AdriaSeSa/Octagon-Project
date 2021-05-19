@@ -9,10 +9,12 @@ public class EnemySpawnPoint : MonoBehaviour
   private Vector3 spawnDir;
 
   private EnemySpawner _enemySpawner;
-  
+  public TubesManager _tubesManager;
+
   private void Start()
   {
     _enemySpawner = FindObjectOfType<EnemySpawner>();
+  
   }
 
   public void SpawnEnemy()
@@ -24,6 +26,9 @@ public class EnemySpawnPoint : MonoBehaviour
         enemy.transform.position = this.transform.position;
         enemy.gameObject.SetActive(true);
         enemy.SetDirection(spawnDir);
+        
+        _tubesManager.ShootEnemyTube();
+        
         break;
       }
     }

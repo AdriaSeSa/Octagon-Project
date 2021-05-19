@@ -18,6 +18,11 @@ public class PlayerController : MonoBehaviour
     public Sprite[] shieldSprites = new Sprite[3];
     public Sprite[] spriteArray = new Sprite[3];
 
+
+    public int GETPlayerLifes()
+    {
+        return playerLifes;
+    }
     private void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
