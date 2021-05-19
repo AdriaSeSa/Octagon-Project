@@ -117,7 +117,7 @@ public class PlayerController : MonoBehaviour
 
     private void Die()
     {
-        _gameManager.PlayerDies();
+        _gameManager.GameOver();
     }
 
     IEnumerator InvulnerabilityTime()

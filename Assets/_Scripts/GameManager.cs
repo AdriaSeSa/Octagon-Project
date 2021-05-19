@@ -7,6 +7,7 @@ using NUnit.Framework.Internal;
 using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
@@ -22,24 +23,36 @@ public class GameManager : MonoBehaviour
 
     private EnemySpawner _enemySpawner;
 
+    private Timer _timer;
+    
     private  List<List<int>> _enemyPatterns = new List<List<int>>();
 
     private bool isGameOver;
     
+    
+    
     public IEnumerator waveSpawning;
 
-    public Canvas gameOverCanvas;
+    public Canvas gameOverPanel;
     private void Start()
     {
         _enemySpawner = FindObjectOfType<EnemySpawner>();
-
+        _timer = FindObjectOfType<Timer>();
+        
+        
         List<int> pattern1 = new List<int> {0, 1, 0, 1};
         List<int> pattern2 = new List<int> {2, 3, 2, 3};
         List<int> pattern3 = new List<int> {0, 1, 2, 3};
+        List<int> pattern4 = new List<int> {4, 5, 6, 7};
+        List<int> pattern5 = new List<int> {1, 5, 4, 3};
+        List<int> pattern6 = new List<int> {0, 1, 0, 7};
 
         _enemyPatterns.Add(pattern1);
         _enemyPatterns.Add(pattern2);
         _enemyPatterns.Add(pattern3);
+        _enemyPatterns.Add(pattern4);
+        _enemyPatterns.Add(pattern5);
+        _enemyPatterns.Add(pattern6);
     }
 
     
@@ -86,10 +99,11 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
-    public void PlayerDies()
+    public void GameOver()
     {
         _enemySpawner.StopEnemies();
-        gameOverCanvas.gameObject.SetActive(true);
+        gameOverPanel.gameObject.SetActive(true);
         isGameOver = true;
+        _timer.StopTimer();
     }
 }
