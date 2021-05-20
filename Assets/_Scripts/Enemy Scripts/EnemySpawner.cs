@@ -48,11 +48,11 @@ public class EnemySpawner : MonoBehaviour
     
     IEnumerator SpawnWave(List<int> spawnPoint, float time)
     {
-       
-        for (int i = 0; i < spawnPoint.Count; i++)
+
+        for (int i = 0; i < spawnPoint.Count && _gameManager.changingSpeed == null; i++)
         {
-            spawnPoints[spawnPoint[i]].SpawnEnemy();
-            yield return new WaitForSecondsRealtime(time);
+             spawnPoints[spawnPoint[i]].SpawnEnemy();
+             yield return new WaitForSecondsRealtime(time);
         }
 
         isSpawningDone = true;

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 using NUnit.Framework.Internal;
+using TMPro;
 using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -27,15 +28,21 @@ public class GameManager : MonoBehaviour
 
     private List<List<int>> _enemyPatterns = new List<List<int>>();
 
+    private IEnumerator waveSpawning;
+    public IEnumerator changingSpeed;
+    
     private bool isGameOver;
     
     private readonly int[] speeds = {8, 12, 4};
+    private readonly float[] spawnRatios = {1.0f, 1.5f, 0.6f};
 
     public int enemiesSpeed;
+    public float enemiesSpawnRatios;
 
+    public TextMeshProUGUI changeSpeedText;
 
-
-    public IEnumerator waveSpawning;
+    
+    
 
     public Canvas gameOverPanel;
 
@@ -45,6 +52,7 @@ public class GameManager : MonoBehaviour
         _timer = FindObjectOfType<Timer>();
 
         enemiesSpeed = 8;
+        enemiesSpawnRatios = 1.0f;
 
         List<int> pattern1 = new List<int> {0, 1, 0, 1};
         List<int> pattern2 = new List<int> {2, 3, 2, 3};
@@ -66,9 +74,10 @@ public class GameManager : MonoBehaviour
     {
         if (!isGameOver)
         {
-            CheckEnemiesSpawn();
-            if (waveSpawning == null)
+            
+            if (changingSpeed == null && waveSpawning == null)
             {
+                Debug.Log("SpawnWave");
                 waveSpawning = WaveSpawning();
                 StartCoroutine(WaveSpawning());
             }
@@ -88,9 +97,10 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator WaveSpawning()
     {
-        int temp = Random.Range(0, _enemyPatterns.Count);
-        _enemySpawner.SpawnEnemyWave(_enemyPatterns[temp], 1.0f);    //TODO: Change time between spawn on different speeds
-        Debug.Log(temp);
+        int tempEnemyPattern = Random.Range(0, _enemyPatterns.Count);
+
+        _enemySpawner.SpawnEnemyWave(_enemyPatterns[tempEnemyPattern], enemiesSpawnRatios);   
+
         yield return new WaitUntil(CheckEnemiesSpawn);
         waveSpawning = null;
     }
@@ -115,20 +125,38 @@ public class GameManager : MonoBehaviour
     
     public void ChangeEnemiesSpeed()
     {
-        //TODO: Destroy current enemies on changing speed and pause the game 0.5 seconds
+        //    Pause game 0.5 seconds and show text
+        if (changingSpeed == null)
+        {
+            changingSpeed = ChangeSpeed();
+            StartCoroutine(ChangeSpeed());
+        }
+    
+        //    Randomize enemy speed and spawn ratio 
         int randomNum = 0;
         
         do
         {
-            randomNum = speeds[Random.Range(0, 3)];
-        } while (randomNum == enemiesSpeed);
+            randomNum = Random.Range(0, 3);
+        } 
+        while (speeds[randomNum] == enemiesSpeed);
         
-        enemiesSpeed = randomNum;
+        enemiesSpeed = speeds[randomNum];
+        enemiesSpawnRatios = spawnRatios[randomNum];
         
+        //    Destroy current enemies
         _enemySpawner.DestroyEnemies();
-        
-        Debug.Log("enemy speed: " + enemiesSpeed);
     }
-    
-    
+
+    private IEnumerator ChangeSpeed()
+    {
+        changeSpeedText.gameObject.SetActive(true);
+        
+        changeSpeedText.text = "Changing Speed!";
+        yield return new WaitForSecondsRealtime(1.5f);
+        
+        changeSpeedText.gameObject.SetActive(false);
+
+        changingSpeed = null;
+    }
 }
