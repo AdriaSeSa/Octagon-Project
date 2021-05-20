@@ -20,11 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5a5d539e-2db9-4d61-9cf4-8d6341702a3d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.M'sK Project/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.M'sK Project/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.M'sK Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.M'sK Project/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Enemy Scripts/EnemyBaseClass.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Enemy Scripts/EnemyBaseClass.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Enemy Scripts/EnemySpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Enemy Scripts/EnemySpawner.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/UI Sprites/Timer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/UI Sprites/Timer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/PlayerSprites/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/PlayerSprites/PlayerController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,10 +65,11 @@
         <option value="$PROJECT_DIR$/Assets/_Scripts/Background Scripts/TubesManager.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/Enemy Scripts/EnemySpawnPoint.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/Background Scripts/BackgroundRandomizer.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Scripts/UI Sprites/Timer.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/Enemy Scripts/EnemyBaseClass.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/Enemy Scripts/EnemySpawner.cs" />
-        <option value="$PROJECT_DIR$/Assets/_Scripts/UI Sprites/Timer.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/GameManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Scripts/PlayerSprites/PlayerController.cs" />
       </list>
     </option>
   </component>
@@ -135,6 +137,7 @@
       <workItem from="1621458976562" duration="1838000" />
       <workItem from="1621461324907" duration="834000" />
       <workItem from="1621515904758" duration="2222000" />
+      <workItem from="1621529344010" duration="829000" />
     </task>
     <servers />
   </component>

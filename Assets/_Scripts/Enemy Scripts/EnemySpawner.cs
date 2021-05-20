@@ -67,4 +67,12 @@ public class EnemySpawner : MonoBehaviour
              _gameManager.enemiesSpeed = 0;
         }
     }
+
+    public void DestroyEnemies()
+    {
+        foreach (var enemy in enemiesPool)
+        {
+            enemy.Destroy();
+        }
+    }
 }

@@ -122,6 +122,7 @@ public class PlayerController : MonoBehaviour
 
     private void Die()
     {
+        //TODO: Show bullet that killed you pausing the game
         _gameManager.GameOver();
     }
 

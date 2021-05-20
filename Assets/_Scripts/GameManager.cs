@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
     
     private readonly int[] speeds = {8, 12, 4};
 
-    public float enemiesSpeed;
+    public int enemiesSpeed;
 
 
 
@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
         _enemySpawner = FindObjectOfType<EnemySpawner>();
         _timer = FindObjectOfType<Timer>();
 
-        enemiesSpeed = 8f;
+        enemiesSpeed = 8;
 
         List<int> pattern1 = new List<int> {0, 1, 0, 1};
         List<int> pattern2 = new List<int> {2, 3, 2, 3};
@@ -116,8 +116,17 @@ public class GameManager : MonoBehaviour
     public void ChangeEnemiesSpeed()
     {
         //TODO: Destroy current enemies on changing speed and pause the game 0.5 seconds
+        int randomNum = 0;
         
-        enemiesSpeed = speeds[Random.Range(0, 3)];
+        do
+        {
+            randomNum = speeds[Random.Range(0, 3)];
+        } while (randomNum == enemiesSpeed);
+        
+        enemiesSpeed = randomNum;
+        
+        _enemySpawner.DestroyEnemies();
+        
         Debug.Log("enemy speed: " + enemiesSpeed);
     }
     

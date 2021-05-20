@@ -44,7 +44,12 @@ public class EnemyBaseClass : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Shield") || other.gameObject.CompareTag("Player"))
         {
-            gameObject.SetActive(false);
+            Destroy();
         }
+    }
+
+    public void Destroy()
+    {
+        gameObject.SetActive(false);
     }
 }
