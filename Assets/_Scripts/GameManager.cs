@@ -24,22 +24,28 @@ public class GameManager : MonoBehaviour
     private EnemySpawner _enemySpawner;
 
     private Timer _timer;
-    
-    private  List<List<int>> _enemyPatterns = new List<List<int>>();
+
+    private List<List<int>> _enemyPatterns = new List<List<int>>();
 
     private bool isGameOver;
     
-    
-    
+    private readonly int[] speeds = {8, 12, 4};
+
+    public float enemiesSpeed;
+
+
+
     public IEnumerator waveSpawning;
 
     public Canvas gameOverPanel;
+
     private void Start()
     {
         _enemySpawner = FindObjectOfType<EnemySpawner>();
         _timer = FindObjectOfType<Timer>();
-        
-        
+
+        enemiesSpeed = 8f;
+
         List<int> pattern1 = new List<int> {0, 1, 0, 1};
         List<int> pattern2 = new List<int> {2, 3, 2, 3};
         List<int> pattern3 = new List<int> {0, 1, 2, 3};
@@ -55,7 +61,7 @@ public class GameManager : MonoBehaviour
         _enemyPatterns.Add(pattern6);
     }
 
-    
+
     private void Update()
     {
         if (!isGameOver)
@@ -71,8 +77,8 @@ public class GameManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);    //Reload current Scene
-            } 
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); //Reload current Scene
+            }
             else if (Input.GetKeyDown(KeyCode.Escape))
             {
                 //TODO: Charge Main Menu Scene
@@ -83,7 +89,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator WaveSpawning()
     {
         int temp = Random.Range(0, _enemyPatterns.Count);
-        _enemySpawner.SpawnEnemyWave(_enemyPatterns[temp], 1.0f);
+        _enemySpawner.SpawnEnemyWave(_enemyPatterns[temp], 1.0f);    //TODO: Change time between spawn on different speeds
         Debug.Log(temp);
         yield return new WaitUntil(CheckEnemiesSpawn);
         waveSpawning = null;
@@ -106,4 +112,14 @@ public class GameManager : MonoBehaviour
         isGameOver = true;
         _timer.StopTimer();
     }
+    
+    public void ChangeEnemiesSpeed()
+    {
+        //TODO: Destroy current enemies on changing speed and pause the game 0.5 seconds
+        
+        enemiesSpeed = speeds[Random.Range(0, 3)];
+        Debug.Log("enemy speed: " + enemiesSpeed);
+    }
+    
+    
 }

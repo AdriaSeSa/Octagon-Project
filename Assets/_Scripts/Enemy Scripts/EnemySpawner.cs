@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
 using UnityEngine;
@@ -9,12 +10,20 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private List<EnemyBaseClass> enemiesPool;
 
+    private GameManager _gameManager;
+    
     public IEnumerator _spawnEnemies;
     
     [SerializeField]
     public EnemySpawnPoint[] spawnPoints = new EnemySpawnPoint[8];
 
     public bool isSpawningDone;
+
+
+    private void Start()
+    {
+        _gameManager = FindObjectOfType<GameManager>();
+    }
 
 
     /// <summary>
@@ -55,7 +64,7 @@ public class EnemySpawner : MonoBehaviour
     {
         foreach (var enemy in enemiesPool)
         {
-            enemy.speed = 0;
+             _gameManager.enemiesSpeed = 0;
         }
     }
 }

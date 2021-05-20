@@ -10,11 +10,17 @@ public class Timer : MonoBehaviour
     private TextMeshProUGUI _seconds, _miliseconds;
 
     private int _currentSecond;
+    private int _lastSecond;
+    
+    private GameManager _gameManager;
     
     private float _currentMilisecond;
 
+
     private void Start()
     {
+        _gameManager = FindObjectOfType<GameManager>();
+        
         _seconds = GameObject.Find("Seconds").GetComponent<TextMeshProUGUI>();
         _miliseconds = GameObject.Find("MiliSeconds").GetComponent<TextMeshProUGUI>();
     }
@@ -29,7 +35,14 @@ public class Timer : MonoBehaviour
             _currentSecond++;
             _currentMilisecond = 0;
         }
-        
+
+        if (_currentSecond % 20 == 0 && _currentSecond != 0 && _currentSecond != _lastSecond)
+        {
+            _lastSecond = _currentSecond;
+            _gameManager.ChangeEnemiesSpeed();
+        }
+
+
         _seconds.text = _currentSecond + ".";
         _miliseconds.text = ((int)_currentMilisecond).ToString();
     }

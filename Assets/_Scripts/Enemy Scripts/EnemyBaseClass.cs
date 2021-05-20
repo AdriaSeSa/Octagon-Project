@@ -7,18 +7,23 @@ using UnityEngine.Serialization;
 public class EnemyBaseClass : MonoBehaviour
 {
     [SerializeField]
-    public int speed;
-    [SerializeField]
     private int xBounds = 8;
     [SerializeField]
     private int yBounds = 8;
 
+    
+    private GameManager _gameManager;
     private Vector3 _enemyDirection;
+
+    private void Start()
+    {
+        _gameManager = FindObjectOfType<GameManager>();
+    }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position += _enemyDirection * (speed * Time.deltaTime);
+        transform.position += _enemyDirection * (_gameManager.enemiesSpeed * Time.deltaTime);
         
        if (transform.position.x >= xBounds || transform.position.x <= -xBounds)
         {
@@ -37,7 +42,7 @@ public class EnemyBaseClass : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Shield" || other.gameObject.tag == "Player")
+        if (other.gameObject.CompareTag("Shield") || other.gameObject.CompareTag("Player"))
         {
             gameObject.SetActive(false);
         }
