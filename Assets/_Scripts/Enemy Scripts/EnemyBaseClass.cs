@@ -11,6 +11,7 @@ public class EnemyBaseClass : MonoBehaviour
     [SerializeField]
     private int yBounds = 8;
 
+    private ParticleManager _particleManager;
     
     private GameManager _gameManager;
     private Vector3 _enemyDirection;
@@ -18,6 +19,7 @@ public class EnemyBaseClass : MonoBehaviour
     private void Start()
     {
         _gameManager = FindObjectOfType<GameManager>();
+        _particleManager = FindObjectOfType<ParticleManager>();
     }
 
     // Update is called once per frame
@@ -50,6 +52,7 @@ public class EnemyBaseClass : MonoBehaviour
 
     public void Destroy()
     {
+        _particleManager.SpawnEnemyDeathParticle(transform.position);
         gameObject.SetActive(false);
     }
 }

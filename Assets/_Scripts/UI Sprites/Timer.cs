@@ -36,7 +36,7 @@ public class Timer : MonoBehaviour
             _currentMilisecond = 0;
         }
 
-        if (_currentSecond % 20 == 0 && _currentSecond != 0 && _currentSecond != _lastSecond)
+        if (_currentSecond % 30 == 0 && _currentSecond != 0 && _currentSecond != _lastSecond)
         {
             _lastSecond = _currentSecond;
             _gameManager.ChangeEnemiesSpeed();

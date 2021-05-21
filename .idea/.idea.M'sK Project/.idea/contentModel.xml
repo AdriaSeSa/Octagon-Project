@@ -9,6 +9,7 @@
         <e p="_Scripts" t="Include">
           <e p="Background Scripts" t="Include">
             <e p="BackgroundRandomizer.cs" t="Include" />
+            <e p="ParticleManager.cs" t="Include" />
             <e p="TubesManager.cs" t="Include" />
           </e>
           <e p="Enemy Scripts" t="Include">
