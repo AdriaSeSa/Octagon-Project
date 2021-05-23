@@ -72,7 +72,7 @@ public class EnemySpawner : MonoBehaviour
     {
         foreach (var enemy in enemiesPool)
         {
-            enemy.Destroy();
+            if (enemy.gameObject.activeSelf)  enemy.Destroy();
         }
     }
 }

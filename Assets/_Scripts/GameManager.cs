@@ -31,7 +31,9 @@ public class GameManager : MonoBehaviour
     private IEnumerator waveSpawning;
     public IEnumerator changingSpeed;
     
-    private bool isGameOver;
+    private bool isGameOver; 
+    [SerializeField, UnityEngine.Range(0,2)]
+    private int gameDifiiculty;
     
     private readonly int[] speeds = {8, 12, 4};
     private readonly float[] spawnRatios = {1.0f, 1.5f, 0.6f};
@@ -54,19 +56,7 @@ public class GameManager : MonoBehaviour
         enemiesSpeed = 8;
         enemiesSpawnRatios = 1.0f;
 
-        List<int> pattern1 = new List<int> {0, 1, 0, 1};
-        List<int> pattern2 = new List<int> {2, 3, 2, 3};
-        List<int> pattern3 = new List<int> {0, 1, 2, 3};
-        List<int> pattern4 = new List<int> {4, 5, 6, 7};
-        List<int> pattern5 = new List<int> {1, 5, 4, 3};
-        List<int> pattern6 = new List<int> {0, 1, 0, 7};
-
-        _enemyPatterns.Add(pattern1);
-        _enemyPatterns.Add(pattern2);
-        _enemyPatterns.Add(pattern3);
-        _enemyPatterns.Add(pattern4);
-        _enemyPatterns.Add(pattern5);
-        _enemyPatterns.Add(pattern6);
+        SetDifficulty(gameDifiiculty);
     }
 
 
@@ -158,5 +148,31 @@ public class GameManager : MonoBehaviour
         changeSpeedText.gameObject.SetActive(false);
 
         changingSpeed = null;
+    }
+    //TODO: Poner diferentes patrones a diferentes dificultades
+    private void SetDifficulty(int difficulty)
+    {
+        switch (difficulty)
+        {
+            case 0:
+                List<int> pattern1 = new List<int> {0, 1, 0, 1};
+                List<int> pattern2 = new List<int> {2, 3, 2, 3};
+                List<int> pattern3 = new List<int> {0, 1, 2, 3};
+                List<int> pattern4 = new List<int> {4, 5, 6, 7};
+                List<int> pattern5 = new List<int> {1, 5, 4, 3};
+                List<int> pattern6 = new List<int> {0, 1, 0, 7};
+
+                _enemyPatterns.Add(pattern1);
+                _enemyPatterns.Add(pattern2);
+                _enemyPatterns.Add(pattern3);
+                _enemyPatterns.Add(pattern4);
+                _enemyPatterns.Add(pattern5);
+                _enemyPatterns.Add(pattern6);
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+        }
     }
 }
