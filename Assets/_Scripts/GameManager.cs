@@ -56,7 +56,8 @@ public class GameManager : MonoBehaviour
         enemiesSpeed = 8;
         enemiesSpawnRatios = 1.0f;
 
-        SetDifficulty(gameDifiiculty);
+        SetGameMode(PlayerPrefs.GetInt("gameMode"));
+        SetDifficulty(PlayerPrefs.GetInt("difficulty"));
     }
 
 
@@ -113,7 +114,47 @@ public class GameManager : MonoBehaviour
         _timer.StopTimer();
     }
     
-    public void ChangeEnemiesSpeed()
+    //TODO: Poner diferentes patrones a diferentes dificultades
+    private void SetDifficulty(int difficulty)
+    {
+        switch (difficulty)
+        {
+            case 0:
+                List<int> pattern1 = new List<int> {0, 1, 0, 1};
+                List<int> pattern2 = new List<int> {2, 3, 2, 3};
+                List<int> pattern3 = new List<int> {0, 1, 2, 3};
+                List<int> pattern4 = new List<int> {4, 5, 6, 7};
+                List<int> pattern5 = new List<int> {1, 5, 4, 3};
+                List<int> pattern6 = new List<int> {0, 1, 0, 7};
+
+                _enemyPatterns.Add(pattern1);
+                _enemyPatterns.Add(pattern2);
+                _enemyPatterns.Add(pattern3);
+                _enemyPatterns.Add(pattern4);
+                _enemyPatterns.Add(pattern5);
+                _enemyPatterns.Add(pattern6);
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+        }
+    }
+
+    private void SetGameMode(int gameMode)
+    {
+        switch (gameMode)
+        {
+            case 0:
+                enemiesSpeed = speeds[2];
+                break;
+            case 1:
+                enemiesSpeed = speeds[1];
+                break;
+        }
+    }
+    
+    /* public void ChangeEnemiesSpeed()
     {
         //    Pause game 0.5 seconds and show text
         if (changingSpeed == null)
@@ -148,31 +189,5 @@ public class GameManager : MonoBehaviour
         changeSpeedText.gameObject.SetActive(false);
 
         changingSpeed = null;
-    }
-    //TODO: Poner diferentes patrones a diferentes dificultades
-    private void SetDifficulty(int difficulty)
-    {
-        switch (difficulty)
-        {
-            case 0:
-                List<int> pattern1 = new List<int> {0, 1, 0, 1};
-                List<int> pattern2 = new List<int> {2, 3, 2, 3};
-                List<int> pattern3 = new List<int> {0, 1, 2, 3};
-                List<int> pattern4 = new List<int> {4, 5, 6, 7};
-                List<int> pattern5 = new List<int> {1, 5, 4, 3};
-                List<int> pattern6 = new List<int> {0, 1, 0, 7};
-
-                _enemyPatterns.Add(pattern1);
-                _enemyPatterns.Add(pattern2);
-                _enemyPatterns.Add(pattern3);
-                _enemyPatterns.Add(pattern4);
-                _enemyPatterns.Add(pattern5);
-                _enemyPatterns.Add(pattern6);
-                break;
-            case 1:
-                break;
-            case 2:
-                break;
-        }
-    }
+    }*/
 }

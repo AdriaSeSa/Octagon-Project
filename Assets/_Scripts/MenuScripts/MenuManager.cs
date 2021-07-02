@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
+    //TODO: CANBIAR TODOS LOS ENUM POR PLAYERPREF
     enum CurrentPanel
     {
         MAIN_MENU,
@@ -30,10 +32,11 @@ public class MenuManager : MonoBehaviour
     
     private CurrentPanel _currentPanel = CurrentPanel.MAIN_MENU;
     private int[] _directionCounter = new int[4];
-
+    
+    
     public GameMode currentGameMode;
     public GameDifficulty currentGameDifficulty;
-    public GameObject[] panels = new GameObject[4];
+    public GameObject[] panels = new GameObject[5];
 
 
     /*
@@ -98,6 +101,7 @@ public class MenuManager : MonoBehaviour
                 switch (option)
                 {
                     case 0:
+                        panels[0].SetActive(false);
                         _currentPanel = CurrentPanel.CREDITS;
                         break;
                     case 1:
@@ -140,7 +144,7 @@ public class MenuManager : MonoBehaviour
                     case 0:
                         SwitchPanels(2);
                         _currentPanel = CurrentPanel.DIFFICULTY;
-                        currentGameMode = GameMode.STANDARD;
+                        PlayerPrefs.SetInt("gameMode", 0);
                         break;
                     case 1:
                         SwitchPanels(2);
@@ -158,7 +162,8 @@ public class MenuManager : MonoBehaviour
                 switch (option)
                 {
                     case 0:
-                        currentGameDifficulty = GameDifficulty.EASY;
+                        PlayerPrefs.SetInt("difficulty", 0);
+                        SceneManager.LoadScene(1);
                         break;
                     case 1:
                         currentGameDifficulty = GameDifficulty.HARD;

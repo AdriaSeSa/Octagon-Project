@@ -36,12 +36,12 @@ public class Timer : MonoBehaviour
             _currentMilisecond = 0;
         }
 
-        if (_currentSecond % 30 == 0 && _currentSecond != 0 && _currentSecond != _lastSecond)
+        /* if (_currentSecond % 30 == 0 && _currentSecond != 0 && _currentSecond != _lastSecond)
         {
             _lastSecond = _currentSecond;
             _gameManager.ChangeEnemiesSpeed();
         }
-
+        */    //Changes speed every 30 seconds
 
         _seconds.text = _currentSecond + ".";
         _miliseconds.text = ((int)_currentMilisecond).ToString();
