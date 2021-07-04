@@ -30,21 +30,22 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator waveSpawning;
     public IEnumerator changingSpeed;
-    
+
+    private AudioSource _music;
+    private readonly float[] musicStarts = {0, 11.99f, 35.99f, 47.98f};
+
     private bool isGameOver; 
     [SerializeField, UnityEngine.Range(0,2)]
-    private int gameDifiiculty;
     
     private readonly int[] speeds = {8, 12, 4};
-    private readonly float[] spawnRatios = {1.0f, 1.5f, 0.6f};
 
     public int enemiesSpeed;
     public float enemiesSpawnRatios;
 
     public TextMeshProUGUI changeSpeedText;
 
-    
-    
+    public GameObject[] tubes = new GameObject[4];
+    public bool isEightWay;
 
     public Canvas gameOverPanel;
 
@@ -52,12 +53,12 @@ public class GameManager : MonoBehaviour
     {
         _enemySpawner = FindObjectOfType<EnemySpawner>();
         _timer = FindObjectOfType<Timer>();
+        _music = FindObjectOfType<AudioSource>();
 
-        enemiesSpeed = 8;
-        enemiesSpawnRatios = 1.0f;
-
+        _music.time = musicStarts[Random.Range(0,4)];
         SetGameMode(PlayerPrefs.GetInt("gameMode"));
         SetDifficulty(PlayerPrefs.GetInt("difficulty"));
+        SetTubes();
     }
 
 
@@ -81,7 +82,7 @@ public class GameManager : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.Escape))
             {
-                //TODO: Charge Main Menu Scene
+                SceneManager.LoadScene(0);
             }
         }
     }
@@ -112,9 +113,14 @@ public class GameManager : MonoBehaviour
         gameOverPanel.gameObject.SetActive(true);
         isGameOver = true;
         _timer.StopTimer();
+        _music.Stop();
     }
     
     //TODO: Poner diferentes patrones a diferentes dificultades
+    /// <summary>
+    /// Set patterns and spawn ratio for different difficulties 
+    /// </summary>
+    /// <param name="difficulty">0=easy; 1=normal; 2=hard; 3=eight-way</param>
     private void SetDifficulty(int difficulty)
     {
         switch (difficulty)
@@ -123,9 +129,9 @@ public class GameManager : MonoBehaviour
                 List<int> pattern1 = new List<int> {0, 1, 0, 1};
                 List<int> pattern2 = new List<int> {2, 3, 2, 3};
                 List<int> pattern3 = new List<int> {0, 1, 2, 3};
-                List<int> pattern4 = new List<int> {4, 5, 6, 7};
-                List<int> pattern5 = new List<int> {1, 5, 4, 3};
-                List<int> pattern6 = new List<int> {0, 1, 0, 7};
+                List<int> pattern4 = new List<int> {0, 1, 0, 3};
+                List<int> pattern5 = new List<int> {1, 1, 1, 2, 2, 0, 1, 1};
+                List<int> pattern6 = new List<int> {3,3,2,2,1,1,3,2,1};
 
                 _enemyPatterns.Add(pattern1);
                 _enemyPatterns.Add(pattern2);
@@ -133,10 +139,59 @@ public class GameManager : MonoBehaviour
                 _enemyPatterns.Add(pattern4);
                 _enemyPatterns.Add(pattern5);
                 _enemyPatterns.Add(pattern6);
+                
                 break;
             case 1:
+                List<int> pattern12 = new List<int> {0, 1, 0, 1};
+                List<int> pattern22 = new List<int> {2, 3, 2, 3};
+                List<int> pattern32 = new List<int> {0, 1, 2, 3};
+                List<int> pattern42 = new List<int> {0, 1, 0, 3};
+                List<int> pattern52 = new List<int> {1, 1, 1, 2, 2, 0, 1, 1};
+                List<int> pattern62 = new List<int> {3,3,2,2,1,1,3,2,1};
+
+                _enemyPatterns.Add(pattern12);
+                _enemyPatterns.Add(pattern22);
+                _enemyPatterns.Add(pattern32);
+                _enemyPatterns.Add(pattern42);
+                _enemyPatterns.Add(pattern52);
+                _enemyPatterns.Add(pattern62);
+                
+                enemiesSpawnRatios /= 1.75f;
                 break;
             case 2:
+                List<int> pattern13 = new List<int> {0, 1, 0, 1};
+                List<int> pattern23 = new List<int> {2, 3, 2, 3};
+                List<int> pattern33 = new List<int> {0, 1, 2, 3};
+                List<int> pattern43 = new List<int> {0, 1, 0, 3};
+                List<int> pattern53 = new List<int> {1, 1, 1, 2, 2, 0, 1, 1};
+                List<int> pattern63 = new List<int> {3,3,2,2,1,1,3,2,1};
+
+                _enemyPatterns.Add(pattern13);
+                _enemyPatterns.Add(pattern23);
+                _enemyPatterns.Add(pattern33);
+                _enemyPatterns.Add(pattern43);
+                _enemyPatterns.Add(pattern53);
+                _enemyPatterns.Add(pattern63);
+                
+                enemiesSpawnRatios /= 2.5f;
+                break;
+            case 3:
+                List<int> pattern14 = new List<int> {0, 1, 0, 1};
+                List<int> pattern24 = new List<int> {2, 3, 2, 3};
+                List<int> pattern34 = new List<int> {0, 1, 2, 3};
+                List<int> pattern44 = new List<int> {4, 5, 6, 7};
+                List<int> pattern54 = new List<int> {1, 5, 4, 3};
+                List<int> pattern64 = new List<int> {0, 1, 0, 7};
+
+                _enemyPatterns.Add(pattern14);
+                _enemyPatterns.Add(pattern24);
+                _enemyPatterns.Add(pattern34);
+                _enemyPatterns.Add(pattern44);
+                _enemyPatterns.Add(pattern54);
+                _enemyPatterns.Add(pattern64);
+
+                enemiesSpawnRatios /= 3f;
+                isEightWay = true;
                 break;
         }
     }
@@ -147,10 +202,20 @@ public class GameManager : MonoBehaviour
         {
             case 0:
                 enemiesSpeed = speeds[2];
+                enemiesSpawnRatios = 1.0f;
                 break;
             case 1:
                 enemiesSpeed = speeds[1];
+                enemiesSpawnRatios = 2.0f;
                 break;
+        }
+    }
+
+    private void SetTubes()
+    {
+        for (int i = 0; i < tubes.Length; i++)
+        {
+            tubes[i].SetActive(isEightWay);
         }
     }
     

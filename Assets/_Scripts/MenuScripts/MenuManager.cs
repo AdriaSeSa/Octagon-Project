@@ -149,6 +149,7 @@ public class MenuManager : MonoBehaviour
                     case 1:
                         SwitchPanels(2);
                         _currentPanel = CurrentPanel.DIFFICULTY;
+                        PlayerPrefs.SetInt("gameMode", 1);
                         currentGameMode = GameMode.RUSH;
                         break;
                     case 4:
@@ -166,13 +167,16 @@ public class MenuManager : MonoBehaviour
                         SceneManager.LoadScene(1);
                         break;
                     case 1:
-                        currentGameDifficulty = GameDifficulty.HARD;
+                        PlayerPrefs.SetInt("difficulty", 2);
+                        SceneManager.LoadScene(1);
                         break;
                     case 2:
-                        currentGameDifficulty = GameDifficulty.NORMAL;
+                        PlayerPrefs.SetInt("difficulty", 1);
+                        SceneManager.LoadScene(1);
                         break;
                     case 3:
-                        currentGameDifficulty = GameDifficulty.EIGHT_WAY;
+                        PlayerPrefs.SetInt("difficulty", 3);
+                        SceneManager.LoadScene(1);
                         break;
                     case 4:
                         SwitchPanels(1);

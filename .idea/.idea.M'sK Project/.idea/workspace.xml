@@ -20,13 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5a5d539e-2db9-4d61-9cf4-8d6341702a3d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.M'sK Project/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.M'sK Project/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.M'sK Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.M'sK Project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MenuScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MenuScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Enemy Scripts/EnemyBaseClass.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Enemy Scripts/EnemyBaseClass.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/GameManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Scripts/MenuScripts/MenuManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/MenuScripts/MenuManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/UI Sprites/Timer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/UI Sprites/Timer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,12 +67,12 @@
         <option value="$PROJECT_DIR$/Assets/_Scripts/Enemy Scripts/EnemySpawnPoint.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/Background Scripts/BackgroundRandomizer.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/PlayerSprites/PlayerController.cs" />
-        <option value="$PROJECT_DIR$/Assets/_Scripts/Enemy Scripts/EnemyBaseClass.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/Background Scripts/ParticleManager.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/Enemy Scripts/EnemySpawner.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/UI Sprites/Timer.cs" />
-        <option value="$PROJECT_DIR$/Assets/_Scripts/GameManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Scripts/Enemy Scripts/EnemyBaseClass.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/MenuScripts/MenuManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Scripts/GameManager.cs" />
       </list>
     </option>
   </component>
@@ -148,6 +146,7 @@
       <workItem from="1621685056685" duration="860000" />
       <workItem from="1625233644322" duration="3447000" />
       <workItem from="1625247381819" duration="1277000" />
+      <workItem from="1625415759937" duration="7498000" />
     </task>
     <servers />
   </component>

@@ -2,15 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 using UnityEngine.Serialization;
 
 public class EnemyBaseClass : MonoBehaviour
 {
-    [SerializeField]
-    private int xBounds = 8;
-    [SerializeField]
-    private int yBounds = 8;
 
+    private Light2D light2D;
+    private PlayerController _player;
     private ParticleManager _particleManager;
     
     private GameManager _gameManager;
@@ -20,21 +19,28 @@ public class EnemyBaseClass : MonoBehaviour
     {
         _gameManager = FindObjectOfType<GameManager>();
         _particleManager = FindObjectOfType<ParticleManager>();
+        _player = FindObjectOfType<PlayerController>();
+        light2D = gameObject.GetComponentInChildren<Light2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
         transform.position += _enemyDirection * (_gameManager.enemiesSpeed * Time.deltaTime);
+
+        Vector2 distanceFromPlayer = _player.transform.position - transform.position;
+
+        if (distanceFromPlayer.magnitude > 3)
+        {
+            light2D.color = Color.yellow;
+            light2D.intensity = 0.5f;
+        }
+        else
+        {
+            light2D.color = Color.red;
+            light2D.intensity = 1.5f;
+        }
         
-       if (transform.position.x >= xBounds || transform.position.x <= -xBounds)
-        {
-            gameObject.SetActive(false);
-        }
-        if (transform.position.y >= yBounds || transform.position.y <= -yBounds)
-        {
-            gameObject.SetActive(false);
-        }
     }
 
     public void SetDirection(Vector3 dir)
