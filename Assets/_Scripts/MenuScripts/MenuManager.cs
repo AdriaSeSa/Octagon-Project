@@ -1,13 +1,15 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class MenuManager : MonoBehaviour
 {
     //TODO: CANBIAR TODOS LOS ENUM POR PLAYERPREF
-    enum CurrentPanel
+    public enum CurrentPanel
     {
         MAIN_MENU,
         PLAY,
@@ -15,29 +17,19 @@ public class MenuManager : MonoBehaviour
         OPTIONS,
         CREDITS
     }
-
-    public enum GameMode
-    {
-        RUSH,
-        STANDARD
-    }
-
-    public enum GameDifficulty
-    {
-        EASY,
-        NORMAL,
-        HARD,
-        EIGHT_WAY
-    }
     
-    private CurrentPanel _currentPanel = CurrentPanel.MAIN_MENU;
-    private int[] _directionCounter = new int[4];
+    public CurrentPanel _currentPanel = CurrentPanel.MAIN_MENU;
+    private MenuOption _menuOption;
     
+    public int[] directionCounter = new int[4];
     
-    public GameMode currentGameMode;
-    public GameDifficulty currentGameDifficulty;
     public GameObject[] panels = new GameObject[5];
 
+
+    private void Start()
+    {
+        _menuOption = FindObjectOfType<MenuOption>();
+    }
 
     /*
      * 0 = Left
@@ -45,24 +37,18 @@ public class MenuManager : MonoBehaviour
      * 2 = Up
      * 3 = Down
      */
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-     
-    }
 
     // Update is called once per frame
     void Update()
     {
        CheckInput();
 
-       for (int i = 0; i < _directionCounter.Length; i++)
+       for (int i = 0; i < directionCounter.Length; i++)
        {
-           if (_directionCounter[i] >= 175)
+           if (directionCounter[i] >= 140)
            {
                SelectOption(i);
-               _directionCounter[i] = 0;
+               directionCounter[i] = 0;
            }
        }
     }
@@ -71,22 +57,29 @@ public class MenuManager : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            _directionCounter[0]++;
+            directionCounter[0]++;
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
-            _directionCounter[1]++;
+            directionCounter[1]++;
         }
         else if (Input.GetKey(KeyCode.UpArrow))
         {
-            _directionCounter[2]++;
+            directionCounter[2]++;
         }
         else if (Input.GetKey(KeyCode.DownArrow))
         {
-            _directionCounter[3]++;
+            directionCounter[3]++;
+        }
+        else
+        {
+            for (int i = 0; i < directionCounter.Length; i++)
+            {
+                directionCounter[i] = 0;
+            }
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Backslash))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Return))
         {
             SelectOption(4);
         }
@@ -103,6 +96,7 @@ public class MenuManager : MonoBehaviour
                     case 0:
                         panels[0].SetActive(false);
                         _currentPanel = CurrentPanel.CREDITS;
+                        _menuOption.SetOptions();
                         break;
                     case 1:
                         SwitchPanels(3);
@@ -150,7 +144,6 @@ public class MenuManager : MonoBehaviour
                         SwitchPanels(2);
                         _currentPanel = CurrentPanel.DIFFICULTY;
                         PlayerPrefs.SetInt("gameMode", 1);
-                        currentGameMode = GameMode.RUSH;
                         break;
                     case 4:
                         SwitchPanels(0);
@@ -186,6 +179,8 @@ public class MenuManager : MonoBehaviour
 
                 break;
         }
+        
+        _menuOption.SetOptions();
     }
 
     void SwitchPanels(int panel)

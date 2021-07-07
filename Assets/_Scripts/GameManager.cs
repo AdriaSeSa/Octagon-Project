@@ -33,8 +33,9 @@ public class GameManager : MonoBehaviour
 
     private AudioSource _music;
     private readonly float[] musicStarts = {0, 11.99f, 35.99f, 47.98f};
+    private int startCountDown;
 
-    private bool isGameOver; 
+    public bool isGameOver; 
     [SerializeField, UnityEngine.Range(0,2)]
     
     private readonly int[] speeds = {8, 12, 4};
@@ -64,6 +65,11 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if (startCountDown < 200)
+        {
+            startCountDown++;
+            return;
+        }
         if (!isGameOver)
         {
             

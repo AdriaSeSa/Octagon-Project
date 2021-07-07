@@ -20,6 +20,7 @@
           <e p="GameManager.cs" t="Include" />
           <e p="MenuScripts" t="Include">
             <e p="MenuManager.cs" t="Include" />
+            <e p="MenuOption.cs" t="Include" />
           </e>
           <e p="PlayerSprites" t="Include">
             <e p="KnifeController.cs" t="Include" />

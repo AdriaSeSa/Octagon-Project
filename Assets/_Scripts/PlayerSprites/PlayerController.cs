@@ -32,60 +32,94 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        #region  Basic Movement
-        
-       /* horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
-        
-        transform.position += new Vector3(_speed *horizontalInput  * Time.deltaTime, _speed * verticalInput* Time.deltaTime);*/
-        #endregion
-        
-        #region Rotate Movement
-        
-        if (Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.UpArrow))
+        if (_gameManager == null)
         {
-            transform.rotation = Quaternion.Euler(0, 0, -135);
-            return;
-        }
-        if (Input.GetKey(KeyCode.RightArrow) && Input.GetKey(KeyCode.UpArrow))
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 135);
-            return;
-        }
-        if (Input.GetKey(KeyCode.DownArrow) && Input.GetKey(KeyCode.LeftArrow))
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 315);
-            return;
-        }
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                transform.rotation = Quaternion.Euler(0, 0, -90);
+                return;
+            }
 
-        if (Input.GetKey(KeyCode.DownArrow)  && Input.GetKey(KeyCode.RightArrow))
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 45);
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 90);
+                return;
+            }
+
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 180);
+                return;
+            }
+
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+                return;
+            }
+
             return;
         }
         
-        if (Input.GetKey(KeyCode.LeftArrow) )
-        {
-            transform.rotation = Quaternion.Euler(0, 0, -90);
-            return;
-        }
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 90);
-            return;
-        }
-        if (Input.GetKey(KeyCode.UpArrow) )
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 180);
-            return;
-        }
-        if (Input.GetKey(KeyCode.DownArrow) )
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-            return;
-        }
+            if (!_gameManager.isGameOver)
+            {
+                #region Rotate Movement
 
-        #endregion
+                if (PlayerPrefs.GetInt("difficulty") == 3) //If 8-way is Enabled
+                {
+                    if (Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.UpArrow))
+                    {
+                        transform.rotation = Quaternion.Euler(0, 0, -135);
+                        return;
+                    }
+
+                    if (Input.GetKey(KeyCode.RightArrow) && Input.GetKey(KeyCode.UpArrow))
+                    {
+                        transform.rotation = Quaternion.Euler(0, 0, 135);
+                        return;
+                    }
+
+                    if (Input.GetKey(KeyCode.DownArrow) && Input.GetKey(KeyCode.LeftArrow))
+                    {
+                        transform.rotation = Quaternion.Euler(0, 0, 315);
+                        return;
+                    }
+
+                    if (Input.GetKey(KeyCode.DownArrow) && Input.GetKey(KeyCode.RightArrow))
+                    {
+                        transform.rotation = Quaternion.Euler(0, 0, 45);
+                        return;
+                    }
+                }
+
+                if (Input.GetKey(KeyCode.LeftArrow))
+                {
+                    transform.rotation = Quaternion.Euler(0, 0, -90);
+                    return;
+                }
+
+                if (Input.GetKey(KeyCode.RightArrow))
+                {
+                    transform.rotation = Quaternion.Euler(0, 0, 90);
+                    return;
+                }
+
+                if (Input.GetKey(KeyCode.UpArrow))
+                {
+                    transform.rotation = Quaternion.Euler(0, 0, 180);
+                    return;
+                }
+
+                if (Input.GetKey(KeyCode.DownArrow))
+                {
+                    transform.rotation = Quaternion.Euler(0, 0, 0);
+                    return;
+                }
+
+                #endregion
+            }
+            
+     
     }
 
     private void OnTriggerEnter2D(Collider2D other)

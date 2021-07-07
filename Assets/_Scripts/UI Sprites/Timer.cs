@@ -15,12 +15,12 @@ public class Timer : MonoBehaviour
     private GameManager _gameManager;
     
     private float _currentMilisecond;
+    private bool isSecondsEnhanced;
 
 
     private void Start()
     {
         _gameManager = FindObjectOfType<GameManager>();
-        
         _seconds = GameObject.Find("Seconds").GetComponent<TextMeshProUGUI>();
         _miliseconds = GameObject.Find("MiliSeconds").GetComponent<TextMeshProUGUI>();
     }
@@ -36,21 +36,39 @@ public class Timer : MonoBehaviour
             _currentMilisecond = 0;
         }
 
-        /* if (_currentSecond % 30 == 0 && _currentSecond != 0 && _currentSecond != _lastSecond)
+        if (_currentSecond == 100)
         {
-            _lastSecond = _currentSecond;
-            _gameManager.ChangeEnemiesSpeed();
+            EnhanceSeconds();
         }
-        */    //Changes speed every 30 seconds
 
-        _seconds.text = _currentSecond + ".";
+        if (isSecondsEnhanced)
+        {
+            _seconds.text = _currentSecond.ToString();
+        }
+        else
+        {
+            _seconds.text = _currentSecond + ".";
+        }
+    
         _miliseconds.text = ((int)_currentMilisecond).ToString();
     }
 
     public void  StopTimer()
     {
         //TODO: Animation for Time to get Bigger and advance to the center of the screen
-        
+        _miliseconds.canvas.sortingLayerName = "GameLayer";
+        _seconds.canvas.sortingLayerName = "GameLayer";
         this.enabled = false;
+    }
+
+    private void EnhanceSeconds()
+    {
+        _miliseconds.gameObject.SetActive(false);
+        if (!isSecondsEnhanced)
+        {
+            isSecondsEnhanced = true;
+            _seconds.transform.Translate(5,0,0);
+        }
+        
     }
 }
