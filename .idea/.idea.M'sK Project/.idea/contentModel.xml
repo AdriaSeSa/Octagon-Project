@@ -27,6 +27,7 @@
             <e p="PlayerController.cs" t="Include" />
           </e>
           <e p="UI Sprites" t="Include">
+            <e p="SecondsIntervalMessage.cs" t="Include" />
             <e p="Timer.cs" t="Include" />
           </e>
         </e>
