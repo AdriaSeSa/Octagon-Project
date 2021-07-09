@@ -21,12 +21,10 @@
   <component name="ChangeListManager">
     <list default="true" id="5a5d539e-2db9-4d61-9cf4-8d6341702a3d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.M'sK Project/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.M'sK Project/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.M'sK Project/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.M'sK Project/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.M'sK Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.M'sK Project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Enemy Scripts/EnemySpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Enemy Scripts/EnemySpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/UI Sprites/SecondsIntervalMessage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/UI Sprites/SecondsIntervalMessage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/UI Sprites/Timer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/UI Sprites/Timer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/MenuScripts/MenuManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/MenuScripts/MenuManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/MenuScripts/MenuOption.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/MenuScripts/MenuOption.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,29 +36,31 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9577AC7A-62EF-4317-9789-031239BA8798/ba/31317406/ExecutionContext.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9577AC7A-62EF-4317-9789-031239BA8798/c2/bae7aafd/Thread.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0847A0FA-F944-44CC-BAF1-958021B27F54/40/43309943/Transform.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0847A0FA-F944-44CC-BAF1-958021B27F54/78/e96a7d0d/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9577AC7A-62EF-4317-9789-031239BA8798/a2/41d5ac4f/SynchronizationContext.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://C:/Program Files/Unity/Hub/Editor/2019.4.15f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/EventSystem/UIBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://C:/Program Files/Unity/Hub/Editor/2019.4.17f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/EventSystem/UIBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0847A0FA-F944-44CC-BAF1-958021B27F54/26/c0c4f13f/UnitySynchronizationContext.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Enemy Scripts/EnemySpawner.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0847A0FA-F944-44CC-BAF1-958021B27F54/7c/2515e51c/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0847A0FA-F944-44CC-BAF1-958021B27F54/9b/fe23a9f0/SetupCoroutine.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Background Scripts/ParticleManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Background Scripts/TubesManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/UI Sprites/PauseGame.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/MenuScripts/MenuOption.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0847A0FA-F944-44CC-BAF1-958021B27F54/40/43309943/Transform.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/MenuScripts/OptionAnimation.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0847A0FA-F944-44CC-BAF1-958021B27F54/78/e96a7d0d/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://C:/Program Files/Unity/Hub/Editor/2019.4.15f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/EventSystem/UIBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Enemy Scripts/EnemySpawner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/MenuScripts/MenuManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9577AC7A-62EF-4317-9789-031239BA8798/d5/67f28af4/IntPtr.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/UI Sprites/SecondsIntervalMessage.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/53FA4D04-FF9E-437D-AC8E-1BA5C15E99CE/99/44771ed2/NativeInputSystem.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2F1C602E-AE0D-45C2-93FF-F3E3AEF759FA/c1/02e80893/EditorApplicationLayout.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0847A0FA-F944-44CC-BAF1-958021B27F54/85/57fc4de7/WaitUntil.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Background Scripts/ParticleManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Background Scripts/TubesManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9577AC7A-62EF-4317-9789-031239BA8798/2a/0d72e35c/List`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6DF2BF6E-7BC1-499C-BB0F-04556DF8B702/55/44496087/Canvas.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/UI Sprites/PauseGame.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0847A0FA-F944-44CC-BAF1-958021B27F54/e8/16a0f096/CustomYieldInstruction.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/MenuScripts/MenuOption.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -76,14 +76,15 @@
         <option value="$PROJECT_DIR$/Assets/_Scripts/Background Scripts/ParticleManager.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/Enemy Scripts/EnemyBaseClass.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/PlayerSprites/PlayerController.cs" />
-        <option value="$PROJECT_DIR$/Assets/_Scripts/MenuScripts/MenuOption.cs" />
-        <option value="$PROJECT_DIR$/Assets/_Scripts/MenuScripts/MenuManager.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/UI Sprites/SecondsIntervalMessage.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/UI Sprites/UIManager.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/UI Sprites/Timer.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/Enemy Scripts/EnemySpawner.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/GameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/UI Sprites/PauseGame.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Scripts/MenuScripts/MenuManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Scripts/MenuScripts/MenuOption.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Scripts/MenuScripts/OptionAnimation.cs" />
       </list>
     </option>
   </component>
@@ -107,10 +108,10 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor &amp; Play">
-    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="11836">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="4168">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="11836" />
+      <option name="pid" value="4168" />
       <option name="selectedOptions">
         <set />
       </option>
@@ -163,6 +164,7 @@
       <workItem from="1625691051637" duration="2666000" />
       <workItem from="1625694342000" duration="628000" />
       <workItem from="1625829760607" duration="4723000" />
+      <workItem from="1625864790740" duration="1120000" />
     </task>
     <servers />
   </component>
@@ -187,42 +189,42 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="549" height="464" key="DebuggerActiveHint" timestamp="1625665116212">
+    <state width="549" height="464" key="DebuggerActiveHint" timestamp="1625865741735">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="549" height="464" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1625665116212" />
-    <state width="1877" height="375" key="GridCell.Tab.0.bottom" timestamp="1625837643488">
+    <state width="549" height="464" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1625865741735" />
+    <state width="1877" height="375" key="GridCell.Tab.0.bottom" timestamp="1625865667516">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="375" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1625837643488" />
-    <state width="1877" height="375" key="GridCell.Tab.0.center" timestamp="1625837643488">
+    <state width="1877" height="375" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1625865667516" />
+    <state width="1877" height="375" key="GridCell.Tab.0.center" timestamp="1625865667516">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="375" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1625837643488" />
-    <state width="1877" height="375" key="GridCell.Tab.0.left" timestamp="1625837643488">
+    <state width="1877" height="375" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1625865667516" />
+    <state width="1877" height="375" key="GridCell.Tab.0.left" timestamp="1625865667516">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="375" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1625837643488" />
-    <state width="1877" height="375" key="GridCell.Tab.0.right" timestamp="1625837643488">
+    <state width="1877" height="375" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1625865667516" />
+    <state width="1877" height="375" key="GridCell.Tab.0.right" timestamp="1625865667516">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="375" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1625837643488" />
-    <state width="1877" height="375" key="GridCell.Tab.1.bottom" timestamp="1625837643488">
+    <state width="1877" height="375" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1625865667516" />
+    <state width="1877" height="375" key="GridCell.Tab.1.bottom" timestamp="1625865673257">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="375" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1625837643488" />
-    <state width="1877" height="375" key="GridCell.Tab.1.center" timestamp="1625837643488">
+    <state width="1877" height="375" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1625865673257" />
+    <state width="1877" height="375" key="GridCell.Tab.1.center" timestamp="1625865673257">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="375" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1625837643488" />
-    <state width="1877" height="375" key="GridCell.Tab.1.left" timestamp="1625837643488">
+    <state width="1877" height="375" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1625865673257" />
+    <state width="1877" height="375" key="GridCell.Tab.1.left" timestamp="1625865673257">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="375" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1625837643488" />
-    <state width="1877" height="375" key="GridCell.Tab.1.right" timestamp="1625837643488">
+    <state width="1877" height="375" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1625865673257" />
+    <state width="1877" height="375" key="GridCell.Tab.1.right" timestamp="1625865673257">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="375" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1625837643488" />
+    <state width="1877" height="375" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1625865673257" />
     <state width="1877" height="375" key="GridCell.Tab.2.bottom" timestamp="1625837643488">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

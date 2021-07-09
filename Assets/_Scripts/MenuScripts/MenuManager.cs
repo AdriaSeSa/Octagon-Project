@@ -45,7 +45,7 @@ public class MenuManager : MonoBehaviour
 
        for (int i = 0; i < directionCounter.Length; i++)
        {
-           if (directionCounter[i] >= 140)
+           if (directionCounter[i] >= 180)
            {
                SelectOption(i);
                directionCounter[i] = 0;

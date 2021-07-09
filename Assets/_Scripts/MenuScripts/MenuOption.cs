@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class MenuOption : MonoBehaviour
 {
-    public Sprite[] animationArray = new Sprite[7];
+    
     public SpriteRenderer[] optionsRenderers = new SpriteRenderer[4]; 
     
     private MenuManager _menuManager;
@@ -18,19 +18,6 @@ public class MenuOption : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        
-        //Gets 1 out of 7 options based on / of 20
-        // Example: 15 / 20 returns sprite number 0
-        // 65 / 20 returns sprite number 3...
-        for (int i = 0; i < 4; i++)
-        {
-            if (optionsRenderers[i].gameObject.activeSelf)
-            {
-                optionsRenderers[i].sprite = animationArray[(int) _menuManager.directionCounter[i] / 20];
-            }
-        }
-        
         
     }
 
