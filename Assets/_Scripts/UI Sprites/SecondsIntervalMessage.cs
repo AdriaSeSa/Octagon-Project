@@ -9,17 +9,19 @@ public class SecondsIntervalMessage : MonoBehaviour
     public TextMeshProUGUI timeText;
     public Animator timeTextAnimator;
     private IEnumerator showTime;
+    private GameManager _gameManager;
     
     // Start is called before the first frame update
     void Start()
     {
         _timer = FindObjectOfType<Timer>();
+        _gameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_timer._currentSecond % 10 == 0 && _timer._currentSecond != 0 && showTime == null)
+        if (_timer._currentSecond % 10 == 0 && _timer._currentSecond != 0 && showTime == null && !_gameManager.isGameOver)
         {
             showTime = ShowTimeText();
             StartCoroutine(ShowTimeText());

@@ -19,6 +19,8 @@ public class EnemySpawner : MonoBehaviour
 
     public bool isSpawningDone;
 
+    private int _tempEnemySpeed;
+
 
     private void Start()
     {
@@ -60,12 +62,24 @@ public class EnemySpawner : MonoBehaviour
 
     }
 
-    public void StopEnemies()
+    public void ToggleStopEnemies(bool isStopping)
     {
-        foreach (var enemy in enemiesPool)
+        if (isStopping)
         {
-             _gameManager.enemiesSpeed = 0;
+            _tempEnemySpeed = _gameManager.enemiesSpeed;
+            foreach (var enemy in enemiesPool)
+            {
+                _gameManager.enemiesSpeed = 0;
+            }
         }
+        else
+        {
+            foreach (var enemy in enemiesPool)
+            {
+                _gameManager.enemiesSpeed = _tempEnemySpeed;
+            }
+        }
+        
     }
 
     public void DestroyEnemies()

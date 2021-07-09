@@ -15,6 +15,8 @@ public class Timer : MonoBehaviour
     private GameManager _gameManager;
     
     private float _currentMilisecond;
+
+    private bool isPaused;
     
     private void Start()
     {
@@ -25,7 +27,9 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _currentMilisecond += Time.deltaTime*100;
+        if (isPaused) return;
+
+            _currentMilisecond += Time.deltaTime*100;
 
         if (_currentMilisecond >= 100)
         {
@@ -37,10 +41,9 @@ public class Timer : MonoBehaviour
 
     }
 
-    public void  StopTimer()
+    public void  ToggleTimer(bool isPausing)
     {
-        //TODO: Animation for Time to get Bigger and advance to the center of the screen
-        this.enabled = false;
+        isPaused = isPausing;
     }
 
   

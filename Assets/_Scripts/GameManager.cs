@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
 
     public Canvas gameOverPanel;
 
+
     private void Start()
     {
         _enemySpawner = FindObjectOfType<EnemySpawner>();
@@ -115,10 +116,10 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        _enemySpawner.StopEnemies();
+        _enemySpawner.ToggleStopEnemies(true);
         gameOverPanel.gameObject.SetActive(true);
         isGameOver = true;
-        _timer.StopTimer();
+        _timer.ToggleTimer(true);
         _music.Stop();
     }
     
