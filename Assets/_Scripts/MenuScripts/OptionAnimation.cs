@@ -26,7 +26,7 @@ public class OptionAnimation : MonoBehaviour
         }
     }
 
-    public void  UpdateOption()
+    private void UpdateOption()
     {
         //Gets 1 out of 9 options based on / of 20
         // Example: 15 / 20 returns sprite number 0

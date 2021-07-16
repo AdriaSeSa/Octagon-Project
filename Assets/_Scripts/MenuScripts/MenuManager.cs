@@ -45,7 +45,7 @@ public class MenuManager : MonoBehaviour
 
        for (int i = 0; i < directionCounter.Length; i++)
        {
-           if (directionCounter[i] >= 180)
+           if (directionCounter[i] >= 200)
            {
                SelectOption(i);
                directionCounter[i] = 0;
@@ -88,6 +88,10 @@ public class MenuManager : MonoBehaviour
 
     void SelectOption(int option)
     {
+        if (_menuOption.triggerAnim == null)
+        {
+            SelectOption(option);
+        }
         switch (_currentPanel)
         {
             case CurrentPanel.MAIN_MENU:

@@ -17,6 +17,7 @@
             <e p="EnemySpawner.cs" t="Include" />
             <e p="EnemySpawnPoint.cs" t="Include" />
           </e>
+          <e p="FakeChild.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />
           <e p="MenuScripts" t="Include">
             <e p="MenuManager.cs" t="Include" />
@@ -27,7 +28,7 @@
             <e p="KnifeController.cs" t="Include" />
             <e p="PlayerController.cs" t="Include" />
           </e>
-          <e p="UI Sprites" t="Include">
+          <e p="UI Scripts" t="Include">
             <e p="PauseGame.cs" t="Include" />
             <e p="SecondsIntervalMessage.cs" t="Include" />
             <e p="Timer.cs" t="Include" />
