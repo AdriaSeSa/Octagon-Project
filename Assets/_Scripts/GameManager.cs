@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     private int _currentHighScoreS, _currentHighScoreR, _currentHighScore;
 
     public bool isGameOver; 
-    [SerializeField, UnityEngine.Range(0,2)]
+
     
     private readonly int[] speeds = {8, 12, 4};
 
@@ -51,12 +51,16 @@ public class GameManager : MonoBehaviour
 
     public Canvas gameOverPanel;
 
+    private UIManager _uiManager;
+    private bool _isHighScore;
+
 
     private void Start()
     {
         _enemySpawner = FindObjectOfType<EnemySpawner>();
         _timer = FindObjectOfType<Timer>();
         _music = FindObjectOfType<AudioSource>();
+        _uiManager = FindObjectOfType<UIManager>();
 
         _music.time = musicStarts[Random.Range(0,4)];
         SetGameMode(PlayerPrefs.GetInt("gameMode"));
@@ -124,6 +128,8 @@ public class GameManager : MonoBehaviour
         _music.Stop();
         
         SetHighScore();
+        _uiManager.SetGameOverUI(PlayerPrefs.GetInt("gameMode"), PlayerPrefs.GetInt("difficulty"), _timer._currentSecond, _isHighScore);
+
         
     }
 
@@ -135,40 +141,48 @@ public class GameManager : MonoBehaviour
                 if (PlayerPrefs.GetInt("gameMode") == 0 && _timer._currentSecond > PlayerPrefs.GetInt("highScore00"))
                 {
                     PlayerPrefs.SetInt("highScore00", _timer._currentSecond);
+                    _isHighScore = true;
                 }
                 else if (PlayerPrefs.GetInt("gameMode") == 1 &&_timer._currentSecond > PlayerPrefs.GetInt("highScore10"))
                 {
                     PlayerPrefs.SetInt("highScore10", _timer._currentSecond);
+                    _isHighScore = true;
                 }
                 break;
             case 1:
                 if (PlayerPrefs.GetInt("gameMode") == 0 && _timer._currentSecond > PlayerPrefs.GetInt("highScore01"))
                 {
                     PlayerPrefs.SetInt("highScore01", _timer._currentSecond);
+                    _isHighScore = true;
                 }
                 else if (PlayerPrefs.GetInt("gameMode") == 1 && _timer._currentSecond > PlayerPrefs.GetInt("highScore11"))
                 {
                     PlayerPrefs.SetInt("highScore11", _timer._currentSecond);
+                    _isHighScore = true;
                 }
                 break;
             case 2:
                 if (PlayerPrefs.GetInt("gameMode") == 0 && _timer._currentSecond > PlayerPrefs.GetInt("highScore02"))
                 {
                     PlayerPrefs.SetInt("highScore02", _timer._currentSecond);
+                    _isHighScore = true;
                 }
                 else if (PlayerPrefs.GetInt("gameMode") == 1 && _timer._currentSecond > PlayerPrefs.GetInt("highScore12"))
                 {
                     PlayerPrefs.SetInt("highScore12", _timer._currentSecond);
+                    _isHighScore = true;
                 }
                 break;
             case 3:
                 if (PlayerPrefs.GetInt("gameMode") == 0 && _timer._currentSecond > PlayerPrefs.GetInt("highScore03"))
                 {
                     PlayerPrefs.SetInt("highScore03", _timer._currentSecond);
+                    _isHighScore = true;
                 }
                 else if (PlayerPrefs.GetInt("gameMode") == 1 && _timer._currentSecond > PlayerPrefs.GetInt("highScore13"))
                 {
                     PlayerPrefs.SetInt("highScore13", _timer._currentSecond);
+                    _isHighScore = true;
                 }
                 break;
         }
