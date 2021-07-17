@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     private AudioSource _music;
     private readonly float[] musicStarts = {0, 11.99f, 35.99f, 47.98f};
     private int startCountDown;
+    private int _currentHighScoreS, _currentHighScoreR, _currentHighScore;
 
     public bool isGameOver; 
     [SerializeField, UnityEngine.Range(0,2)]
@@ -121,7 +122,58 @@ public class GameManager : MonoBehaviour
         isGameOver = true;
         _timer.ToggleTimer(true);
         _music.Stop();
+        
+        SetHighScore();
+        
     }
+
+    private void SetHighScore()
+    {
+        switch (PlayerPrefs.GetInt("difficulty"))
+        {
+            case 0:
+                if (PlayerPrefs.GetInt("gameMode") == 0 && _timer._currentSecond > PlayerPrefs.GetInt("highScore00"))
+                {
+                    PlayerPrefs.SetInt("highScore00", _timer._currentSecond);
+                }
+                else if (PlayerPrefs.GetInt("gameMode") == 1 &&_timer._currentSecond > PlayerPrefs.GetInt("highScore10"))
+                {
+                    PlayerPrefs.SetInt("highScore10", _timer._currentSecond);
+                }
+                break;
+            case 1:
+                if (PlayerPrefs.GetInt("gameMode") == 0 && _timer._currentSecond > PlayerPrefs.GetInt("highScore01"))
+                {
+                    PlayerPrefs.SetInt("highScore01", _timer._currentSecond);
+                }
+                else if (PlayerPrefs.GetInt("gameMode") == 1 && _timer._currentSecond > PlayerPrefs.GetInt("highScore11"))
+                {
+                    PlayerPrefs.SetInt("highScore11", _timer._currentSecond);
+                }
+                break;
+            case 2:
+                if (PlayerPrefs.GetInt("gameMode") == 0 && _timer._currentSecond > PlayerPrefs.GetInt("highScore02"))
+                {
+                    PlayerPrefs.SetInt("highScore02", _timer._currentSecond);
+                }
+                else if (PlayerPrefs.GetInt("gameMode") == 1 && _timer._currentSecond > PlayerPrefs.GetInt("highScore12"))
+                {
+                    PlayerPrefs.SetInt("highScore12", _timer._currentSecond);
+                }
+                break;
+            case 3:
+                if (PlayerPrefs.GetInt("gameMode") == 0 && _timer._currentSecond > PlayerPrefs.GetInt("highScore03"))
+                {
+                    PlayerPrefs.SetInt("highScore03", _timer._currentSecond);
+                }
+                else if (PlayerPrefs.GetInt("gameMode") == 1 && _timer._currentSecond > PlayerPrefs.GetInt("highScore13"))
+                {
+                    PlayerPrefs.SetInt("highScore13", _timer._currentSecond);
+                }
+                break;
+        }
+    }
+    
     
     //TODO: Poner diferentes patrones a diferentes dificultades
     /// <summary>

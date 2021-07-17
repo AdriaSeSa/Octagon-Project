@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
@@ -8,7 +9,6 @@ using UnityEngine.Serialization;
 
 public class MenuManager : MonoBehaviour
 {
-    //TODO: CANBIAR TODOS LOS ENUM POR PLAYERPREF
     public enum CurrentPanel
     {
         MAIN_MENU,
@@ -17,18 +17,34 @@ public class MenuManager : MonoBehaviour
         OPTIONS,
         CREDITS
     }
-    
+
     public CurrentPanel _currentPanel = CurrentPanel.MAIN_MENU;
     private MenuOption _menuOption;
-    
+    private PlayerController _playerController;
+    private int[] _highScores = new int[8];
+    private Color32[] _scoreColors = {Color.cyan, Color.red, Color.yellow, Color.magenta};
+
     public int[] directionCounter = new int[4];
     
     public GameObject[] panels = new GameObject[5];
+
+    public GameObject highScoreUI;
+    public TextMeshProUGUI highScoreText;
 
 
     private void Start()
     {
         _menuOption = FindObjectOfType<MenuOption>();
+        _playerController = FindObjectOfType<PlayerController>();
+
+        _highScores[0] = PlayerPrefs.GetInt("highScore00");
+        _highScores[1] = PlayerPrefs.GetInt("highScore02");
+        _highScores[2] = PlayerPrefs.GetInt("highScore01");
+        _highScores[3] = PlayerPrefs.GetInt("highScore03");
+        _highScores[4] = PlayerPrefs.GetInt("highScore10");
+        _highScores[5] = PlayerPrefs.GetInt("highScore12");
+        _highScores[6] = PlayerPrefs.GetInt("highScore11");
+        _highScores[7] = PlayerPrefs.GetInt("highScore13");
     }
 
     /*
@@ -41,15 +57,31 @@ public class MenuManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       CheckInput();
-
-       for (int i = 0; i < directionCounter.Length; i++)
+        if (_menuOption.triggerAnim != null)
+        {
+            CheckInput();
+        }
+        
+        for (int i = 0; i < directionCounter.Length; i++)
        {
            if (directionCounter[i] >= 200)
            {
                SelectOption(i);
                directionCounter[i] = 0;
            }
+       }
+
+       if (_currentPanel == CurrentPanel.DIFFICULTY)
+       {
+           int tempAdd = 0;
+           
+           if (PlayerPrefs.GetInt("gameMode") == 1)
+           {
+               tempAdd = 4;
+           }
+           
+           highScoreText.text = _highScores[_playerController.currentDirection + tempAdd].ToString();
+           highScoreText.color = _scoreColors[_playerController.currentDirection];
        }
     }
 
@@ -143,11 +175,15 @@ public class MenuManager : MonoBehaviour
                         SwitchPanels(2);
                         _currentPanel = CurrentPanel.DIFFICULTY;
                         PlayerPrefs.SetInt("gameMode", 0);
+                        
+                        highScoreUI.SetActive(true);
                         break;
                     case 1:
                         SwitchPanels(2);
                         _currentPanel = CurrentPanel.DIFFICULTY;
                         PlayerPrefs.SetInt("gameMode", 1);
+                        
+                        highScoreUI.SetActive(true);
                         break;
                     case 4:
                         SwitchPanels(0);
@@ -178,6 +214,8 @@ public class MenuManager : MonoBehaviour
                     case 4:
                         SwitchPanels(1);
                         _currentPanel = CurrentPanel.PLAY;
+                        
+                        highScoreUI.SetActive(false);
                         break;
                 }
 

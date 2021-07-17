@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public SpriteRenderer shieldSpriteRenderer;
     public Sprite[] shieldSprites = new Sprite[3];
     public Sprite[] spriteArray = new Sprite[3];
+    public int currentDirection;
 
 
     public int GETPlayerLifes()
@@ -37,24 +38,28 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKey(KeyCode.LeftArrow))
             {
                 transform.rotation = Quaternion.Euler(0, 0, -90);
+                currentDirection = 0;
                 return;
             }
 
             if (Input.GetKey(KeyCode.RightArrow))
             {
                 transform.rotation = Quaternion.Euler(0, 0, 90);
+                currentDirection = 1;
                 return;
             }
 
             if (Input.GetKey(KeyCode.UpArrow))
             {
                 transform.rotation = Quaternion.Euler(0, 0, 180);
+                currentDirection = 2;
                 return;
             }
 
             if (Input.GetKey(KeyCode.DownArrow))
             {
                 transform.rotation = Quaternion.Euler(0, 0, 0);
+                currentDirection = 3;
                 return;
             }
 
