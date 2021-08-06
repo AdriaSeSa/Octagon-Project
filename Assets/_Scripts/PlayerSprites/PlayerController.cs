@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private IEnumerator _invulnerabilityTime;
     private int playerLifes = 3;
     private GameManager _gameManager;
+    private AudioController _audioController;
     
     public SpriteRenderer shieldSpriteRenderer;
     public Sprite[] shieldSprites = new Sprite[3];
@@ -28,6 +29,7 @@ public class PlayerController : MonoBehaviour
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _gameManager = FindObjectOfType<GameManager>();
+        _audioController = FindObjectOfType<AudioController>();
     }
 
     // Update is called once per frame
@@ -177,6 +179,7 @@ public class PlayerController : MonoBehaviour
         {
             if (playerLifes != 1)
             {
+                _audioController.PlayPlayerHit();
                 _invulnerabilityTime = InvulnerabilityTime();
                 StartCoroutine(InvulnerabilityTime());
                 UpdateSprite();
@@ -189,6 +192,7 @@ public class PlayerController : MonoBehaviour
     private void Die()
     {
         //TODO: Show bullet that killed you pausing the game
+        _audioController.PlayPlayerLoss();
         _gameManager.GameOver();
     }
 

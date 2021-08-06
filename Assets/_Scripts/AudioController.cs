@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class AudioController : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class AudioController : MonoBehaviour
     public AudioSource musicSource;
     public AudioSource[] sfxSource;
     
+    private readonly float[] musicStarts = {0, 11.99f, 35.99f, 47.98f};
 
     private void Awake()
     {
@@ -24,6 +26,7 @@ public class AudioController : MonoBehaviour
         if (musicSource != null)
         {
             musicSource.mute = PlayerPrefs.GetInt(MusicPrefs) == 1;
+            musicSource.time = musicStarts[Random.Range(0,4)];
         }
         
         for (int i = 0; i < sfxSource.Length; i++)
@@ -43,11 +46,13 @@ public class AudioController : MonoBehaviour
 
     public void PlayPlayerHit()
     {
+        sfxSource[1].time = Mathf.Min(0, sfxSource[1].clip.length);
         sfxSource[1].Play();
     }
 
     public void PlayPlayerLoss()
     {
+        sfxSource[2].time = Mathf.Min(0, sfxSource[2].clip.length);
         sfxSource[2].Play();
     }
     

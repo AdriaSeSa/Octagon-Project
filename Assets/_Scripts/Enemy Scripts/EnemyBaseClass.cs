@@ -52,15 +52,20 @@ public class EnemyBaseClass : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Shield") || other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Shield"))
+        {
+            _audioController.PlayEnemyDeath();
+            Destroy();
+        }
+        else if (other.gameObject.CompareTag("Player"))
         {
             Destroy();
         }
+     
     }
 
     public void Destroy()
     {
-        _audioController.PlayEnemyDeath();
         _particleManager.SpawnEnemyDeathParticle(transform.position);
         gameObject.SetActive(false);
     }

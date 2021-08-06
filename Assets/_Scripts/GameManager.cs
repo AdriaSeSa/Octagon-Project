@@ -30,8 +30,8 @@ public class GameManager : MonoBehaviour
     private IEnumerator waveSpawning;
     public IEnumerator changingSpeed;
 
-    private AudioSource _music;
-    private readonly float[] musicStarts = {0, 11.99f, 35.99f, 47.98f};
+
+   
     private int startCountDown;
     private int _currentHighScoreS, _currentHighScoreR, _currentHighScore;
 
@@ -52,16 +52,21 @@ public class GameManager : MonoBehaviour
 
     private UIManager _uiManager;
     private bool _isHighScore;
+    private AudioController _audioController;
+    
+
 
 
     private void Start()
     {
         _enemySpawner = FindObjectOfType<EnemySpawner>();
         _timer = FindObjectOfType<Timer>();
-        _music = FindObjectOfType<AudioSource>();
+      
         _uiManager = FindObjectOfType<UIManager>();
 
-        _music.time = musicStarts[Random.Range(0,4)];
+        _audioController = FindObjectOfType<AudioController>();
+
+     
         SetGameMode(PlayerPrefs.GetInt("gameMode"));
         SetDifficulty(PlayerPrefs.GetInt("difficulty"));
         SetTubes();
@@ -124,7 +129,7 @@ public class GameManager : MonoBehaviour
         _uiManager.ToggleUI(false);
         isGameOver = true;
         _timer.ToggleTimer(true);
-        _music.Stop();
+        _audioController.musicSource.Stop();
         
         SetHighScore();
         _uiManager.SetGameOverUI(PlayerPrefs.GetInt("gameMode"), PlayerPrefs.GetInt("difficulty"), _timer._currentSecond, _isHighScore);

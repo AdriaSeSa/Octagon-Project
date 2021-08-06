@@ -26,6 +26,7 @@ public class MenuManager : MonoBehaviour
     private int[] _highScores = new int[8];
     private Color32[] _scoreColors = {Color.cyan, Color.red, Color.yellow, Color.magenta};
     private SettingsController _settingsController;
+    private MenuAudioController _menuAudio;
 
     public int[] directionCounter = new int[4];
     
@@ -41,6 +42,7 @@ public class MenuManager : MonoBehaviour
         _playerController = FindObjectOfType<PlayerController>();
         _tutorialSpawner = FindObjectOfType<TutorialSpawner>();
         _settingsController = FindObjectOfType<SettingsController>();
+        _menuAudio = FindObjectOfType<MenuAudioController>();
         
         _highScores[0] = PlayerPrefs.GetInt("highScore00");
         _highScores[1] = PlayerPrefs.GetInt("highScore02");
@@ -95,6 +97,7 @@ public class MenuManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Return))
         {
             SelectOption(4);
+            _menuAudio.PlayBackSFX();
         }
 
         if (_currentPanel == CurrentPanel.CREDITS || _currentPanel == CurrentPanel.HOWTOPLAY) return;
