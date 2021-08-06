@@ -168,13 +168,10 @@ public class MenuManager : MonoBehaviour
                 switch (option)
                 {
                     case 0:
-                        _settingsController.ToggleFullScreen();
+                        _settingsController.ToggleSFX();
                         break;
                     case 1:
                         _settingsController.ToggleMusic();
-                        break;
-                    case 2:
-                        _settingsController.ToggleSFX();
                         break;
                     case 4:
                         SwitchPanels(0);
@@ -224,19 +221,19 @@ public class MenuManager : MonoBehaviour
                 {
                     case 0:
                         PlayerPrefs.SetInt("difficulty", 0);
-                        SceneManager.LoadScene(1);
+                        LoadGame();
                         break;
                     case 1:
                         PlayerPrefs.SetInt("difficulty", 2);
-                        SceneManager.LoadScene(1);
+                        LoadGame();
                         break;
                     case 2:
                         PlayerPrefs.SetInt("difficulty", 1);
-                        SceneManager.LoadScene(1);
+                        LoadGame();
                         break;
                     case 3:
                         PlayerPrefs.SetInt("difficulty", 3);
-                        SceneManager.LoadScene(1);
+                        LoadGame();
                         break;
                     case 4:
                         SwitchPanels(1);
@@ -256,5 +253,11 @@ public class MenuManager : MonoBehaviour
     {
         panels[(int)_currentPanel].SetActive(false);
         panels[panel].SetActive(true);
+    }
+
+    void LoadGame()
+    {
+        _menuAudio.selectOptionSFX.Stop();
+        SceneManager.LoadScene(1);
     }
 }

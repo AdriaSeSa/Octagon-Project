@@ -261,7 +261,7 @@ public class GameManager : MonoBehaviour
                 List<int> pattern34 = new List<int> {0, 1, 2, 3};
                 List<int> pattern44 = new List<int> {4, 5, 6, 7};
                 List<int> pattern54 = new List<int> {1, 5, 4, 3};
-                List<int> pattern64 = new List<int> {0, 1, 0, 7};
+                List<int> pattern64 = new List<int> {0, 1, 0, 2};
                 List<int> pattern74 = new List<int> {7, 6, 5, 4};
                 List<int> pattern84 = new List<int> {6, 6, 5, 5, 4, 4, 7, 7};
 
@@ -274,7 +274,7 @@ public class GameManager : MonoBehaviour
                 _enemyPatterns.Add(pattern74);
                 _enemyPatterns.Add(pattern84);
 
-                enemiesSpawnRatios = PlayerPrefs.GetInt("gameMode") == 0 ? 0.5f : 1f;
+                enemiesSpawnRatios = PlayerPrefs.GetInt("gameMode") == 0 ? 0.35f : 1f;
                 isEightWay = true;
                 break;
         }
