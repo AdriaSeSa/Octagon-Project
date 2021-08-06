@@ -1,4 +1,4 @@
 # Octagon Project
- Small Unity Game made by Adrià Sellarés (AdriaSeSa)
+ Small Unity Arcade Game made by Adrià Sellarés (AdriaSeSa)
 
-
+Use Arrow Keys to block upcoming projectiles.
