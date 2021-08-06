@@ -7,6 +7,7 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="_Scripts" t="Include">
+          <e p="AudioController.cs" t="Include" />
           <e p="Background Scripts" t="Include">
             <e p="BackgroundRandomizer.cs" t="Include" />
             <e p="ParticleManager.cs" t="Include" />
@@ -23,6 +24,8 @@
             <e p="MenuManager.cs" t="Include" />
             <e p="MenuOption.cs" t="Include" />
             <e p="OptionAnimation.cs" t="Include" />
+            <e p="SettingsController.cs" t="Include" />
+            <e p="TutorialSpawner.cs" t="Include" />
           </e>
           <e p="PlayerSprites" t="Include">
             <e p="KnifeController.cs" t="Include" />

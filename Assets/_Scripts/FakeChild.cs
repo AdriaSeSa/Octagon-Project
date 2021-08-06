@@ -19,7 +19,7 @@ public class FakeChild : MonoBehaviour
     {
         if (FakeParent == null)
             return;
- 
+        
         var targetPos = FakeParent.position - _positionOffset;
         var targetRot = FakeParent.localRotation * _rotationOffset;
  

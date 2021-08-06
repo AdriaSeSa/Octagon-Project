@@ -34,7 +34,7 @@ public class MenuOption : MonoBehaviour
         triggerAnim = null;
         
         optionsAnimator.SetTrigger("OptionsOut");
-        yield return new WaitForSecondsRealtime(1.0f);
+        yield return new WaitForSecondsRealtime(0.8f);
         ChangeOptions();
         
         triggerAnim = TriggerAnim();
@@ -72,6 +72,7 @@ public class MenuOption : MonoBehaviour
                 optionsRenderers[6].gameObject.SetActive(true);
                 break;
             case MenuManager.CurrentPanel.CREDITS:
+            case MenuManager.CurrentPanel.HOWTOPLAY:
                 optionsRenderers[0].gameObject.SetActive(false);
                 optionsRenderers[1].gameObject.SetActive(false);
                 optionsRenderers[2].gameObject.SetActive(false);

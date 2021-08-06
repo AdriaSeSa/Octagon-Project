@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     public Sprite[] shieldSprites = new Sprite[3];
     public Sprite[] spriteArray = new Sprite[3];
     public int currentDirection;
-
+    public bool isTutorialOn = false;
 
     public int GETPlayerLifes()
     {
@@ -35,6 +35,33 @@ public class PlayerController : MonoBehaviour
     {
         if (_gameManager == null)
         {
+            if (isTutorialOn)
+            {
+                if (Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.UpArrow))
+                {
+                    transform.rotation = Quaternion.Euler(0, 0, -135);
+                    return;
+                }
+
+                if (Input.GetKey(KeyCode.RightArrow) && Input.GetKey(KeyCode.UpArrow))
+                {
+                    transform.rotation = Quaternion.Euler(0, 0, 135);
+                    return;
+                }
+
+                if (Input.GetKey(KeyCode.DownArrow) && Input.GetKey(KeyCode.LeftArrow))
+                {
+                    transform.rotation = Quaternion.Euler(0, 0, 315);
+                    return;
+                }
+
+                if (Input.GetKey(KeyCode.DownArrow) && Input.GetKey(KeyCode.RightArrow))
+                {
+                    transform.rotation = Quaternion.Euler(0, 0, 45);
+                    return;
+                }
+            }
+            
             if (Input.GetKey(KeyCode.LeftArrow))
             {
                 transform.rotation = Quaternion.Euler(0, 0, -90);

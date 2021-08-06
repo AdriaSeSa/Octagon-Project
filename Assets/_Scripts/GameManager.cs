@@ -5,7 +5,6 @@ using System.Linq;
 using NUnit.Framework;
 using NUnit.Framework.Internal;
 using TMPro;
-using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
@@ -39,7 +38,7 @@ public class GameManager : MonoBehaviour
     public bool isGameOver; 
 
     
-    private readonly int[] speeds = {8, 12, 4};
+    private readonly int[] speeds = {8, 12, 3};
 
     public int enemiesSpeed;
     public float enemiesSpawnRatios;
@@ -122,7 +121,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         _enemySpawner.ToggleStopEnemies(true);
-        gameOverPanel.gameObject.SetActive(true);
+        _uiManager.ToggleUI(false);
         isGameOver = true;
         _timer.ToggleTimer(true);
         _music.Stop();
@@ -213,6 +212,8 @@ public class GameManager : MonoBehaviour
                 _enemyPatterns.Add(pattern5);
                 _enemyPatterns.Add(pattern6);
                 
+                enemiesSpawnRatios = PlayerPrefs.GetInt("gameMode") == 0 ? 0.9f : 1.8f;
+                
                 break;
             case 1:
                 List<int> pattern12 = new List<int> {0, 1, 0, 1};
@@ -228,8 +229,9 @@ public class GameManager : MonoBehaviour
                 _enemyPatterns.Add(pattern42);
                 _enemyPatterns.Add(pattern52);
                 _enemyPatterns.Add(pattern62);
+
+                enemiesSpawnRatios = PlayerPrefs.GetInt("gameMode") == 0 ? 0.7f : 1.3f;
                 
-                enemiesSpawnRatios /= 1.75f;
                 break;
             case 2:
                 List<int> pattern13 = new List<int> {0, 1, 0, 1};
@@ -246,7 +248,7 @@ public class GameManager : MonoBehaviour
                 _enemyPatterns.Add(pattern53);
                 _enemyPatterns.Add(pattern63);
                 
-                enemiesSpawnRatios /= 2.5f;
+                enemiesSpawnRatios = PlayerPrefs.GetInt("gameMode") == 0 ? 0.35f : 1f;
                 break;
             case 3:
                 List<int> pattern14 = new List<int> {0, 1, 0, 1};
@@ -255,6 +257,8 @@ public class GameManager : MonoBehaviour
                 List<int> pattern44 = new List<int> {4, 5, 6, 7};
                 List<int> pattern54 = new List<int> {1, 5, 4, 3};
                 List<int> pattern64 = new List<int> {0, 1, 0, 7};
+                List<int> pattern74 = new List<int> {7, 6, 5, 4};
+                List<int> pattern84 = new List<int> {6, 6, 5, 5, 4, 4, 7, 7};
 
                 _enemyPatterns.Add(pattern14);
                 _enemyPatterns.Add(pattern24);
@@ -262,8 +266,10 @@ public class GameManager : MonoBehaviour
                 _enemyPatterns.Add(pattern44);
                 _enemyPatterns.Add(pattern54);
                 _enemyPatterns.Add(pattern64);
+                _enemyPatterns.Add(pattern74);
+                _enemyPatterns.Add(pattern84);
 
-                enemiesSpawnRatios /= 3f;
+                enemiesSpawnRatios = PlayerPrefs.GetInt("gameMode") == 0 ? 0.5f : 1f;
                 isEightWay = true;
                 break;
         }

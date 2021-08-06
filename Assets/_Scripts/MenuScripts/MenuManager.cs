@@ -15,18 +15,21 @@ public class MenuManager : MonoBehaviour
         PLAY,
         DIFFICULTY,
         OPTIONS,
-        CREDITS
+        CREDITS,
+        HOWTOPLAY
     }
 
     public CurrentPanel _currentPanel = CurrentPanel.MAIN_MENU;
     private MenuOption _menuOption;
     private PlayerController _playerController;
+    private TutorialSpawner _tutorialSpawner;
     private int[] _highScores = new int[8];
     private Color32[] _scoreColors = {Color.cyan, Color.red, Color.yellow, Color.magenta};
+    private SettingsController _settingsController;
 
     public int[] directionCounter = new int[4];
     
-    public GameObject[] panels = new GameObject[5];
+    public GameObject[] panels = new GameObject[6];
 
     public GameObject highScoreUI;
     public TextMeshProUGUI highScoreText;
@@ -36,7 +39,9 @@ public class MenuManager : MonoBehaviour
     {
         _menuOption = FindObjectOfType<MenuOption>();
         _playerController = FindObjectOfType<PlayerController>();
-
+        _tutorialSpawner = FindObjectOfType<TutorialSpawner>();
+        _settingsController = FindObjectOfType<SettingsController>();
+        
         _highScores[0] = PlayerPrefs.GetInt("highScore00");
         _highScores[1] = PlayerPrefs.GetInt("highScore02");
         _highScores[2] = PlayerPrefs.GetInt("highScore01");
@@ -85,23 +90,30 @@ public class MenuManager : MonoBehaviour
        }
     }
 
-    void CheckInput()
+    private void CheckInput()
     {
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Return))
+        {
+            SelectOption(4);
+        }
+
+        if (_currentPanel == CurrentPanel.CREDITS || _currentPanel == CurrentPanel.HOWTOPLAY) return;
+        
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            directionCounter[0]++;
+            directionCounter[0]+=2;
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
-            directionCounter[1]++;
+            directionCounter[1]+=2;
         }
         else if (Input.GetKey(KeyCode.UpArrow))
         {
-            directionCounter[2]++;
+            directionCounter[2]+=2;
         }
         else if (Input.GetKey(KeyCode.DownArrow))
         {
-            directionCounter[3]++;
+            directionCounter[3]+=2;
         }
         else
         {
@@ -111,13 +123,10 @@ public class MenuManager : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Return))
-        {
-            SelectOption(4);
-        }
-                
     }
 
+    
+    //TODO: Fix Credits options Animation and Do HOW TO PLAY
     void SelectOption(int option)
     {
         if (_menuOption.triggerAnim == null)
@@ -130,9 +139,8 @@ public class MenuManager : MonoBehaviour
                 switch (option)
                 {
                     case 0:
-                        panels[0].SetActive(false);
+                        SwitchPanels(4);
                         _currentPanel = CurrentPanel.CREDITS;
-                        _menuOption.SetOptions();
                         break;
                     case 1:
                         SwitchPanels(3);
@@ -141,6 +149,11 @@ public class MenuManager : MonoBehaviour
                     case 2:
                         SwitchPanels(1);
                         _currentPanel = CurrentPanel.PLAY;
+                        break;
+                    case 3:
+                        SwitchPanels(5);
+                        _playerController.isTutorialOn = true;
+                        _currentPanel = CurrentPanel.HOWTOPLAY;
                         break;
                     case 4:
                         Application.Quit(); //Exits application when presed BackSpace or Esc on Main Menu
@@ -151,6 +164,15 @@ public class MenuManager : MonoBehaviour
             case CurrentPanel.OPTIONS:
                 switch (option)
                 {
+                    case 0:
+                        _settingsController.ToggleFullScreen();
+                        break;
+                    case 1:
+                        _settingsController.ToggleMusic();
+                        break;
+                    case 2:
+                        _settingsController.ToggleSFX();
+                        break;
                     case 4:
                         SwitchPanels(0);
                         _currentPanel = CurrentPanel.MAIN_MENU; 
@@ -159,10 +181,12 @@ public class MenuManager : MonoBehaviour
                 break;
             
             case CurrentPanel.CREDITS:
+            case CurrentPanel.HOWTOPLAY:
                 switch (option)
                 {
                     case 4:
                         SwitchPanels(0);
+                        _playerController.isTutorialOn = false;
                         _currentPanel = CurrentPanel.MAIN_MENU; 
                         break;
                 }

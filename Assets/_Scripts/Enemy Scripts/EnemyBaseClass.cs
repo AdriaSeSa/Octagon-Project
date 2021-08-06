@@ -11,6 +11,7 @@ public class EnemyBaseClass : MonoBehaviour
     private Light2D light2D;
     private PlayerController _player;
     private ParticleManager _particleManager;
+    private AudioController _audioController;
     
     private GameManager _gameManager;
     private Vector3 _enemyDirection;
@@ -21,6 +22,7 @@ public class EnemyBaseClass : MonoBehaviour
         _particleManager = FindObjectOfType<ParticleManager>();
         _player = FindObjectOfType<PlayerController>();
         light2D = gameObject.GetComponentInChildren<Light2D>();
+        _audioController = FindObjectOfType<AudioController>();
     }
 
     // Update is called once per frame
@@ -58,6 +60,7 @@ public class EnemyBaseClass : MonoBehaviour
 
     public void Destroy()
     {
+        _audioController.PlayEnemyDeath();
         _particleManager.SpawnEnemyDeathParticle(transform.position);
         gameObject.SetActive(false);
     }

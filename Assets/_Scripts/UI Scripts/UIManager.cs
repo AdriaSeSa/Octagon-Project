@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -8,8 +9,38 @@ public class UIManager : MonoBehaviour
     public Animator _uiAnimator;
 
     public TextMeshProUGUI mode, difficulty, time;
-    
-    
+
+    public TextMeshProUGUI modeUI, difficultyUI;
+
+    private void Start()
+    {
+        switch (PlayerPrefs.GetInt("gameMode"))
+        {
+            case 0:
+                modeUI.text = "Standard";
+                break;
+            case 1:
+                modeUI.text = "Rush";
+                break;
+        }
+
+        switch (PlayerPrefs.GetInt("difficulty"))
+        {
+            case 0:
+                difficultyUI.text = "Easy";
+                break;
+            case 1:
+                difficultyUI.text = "Normal";
+                break;
+            case 2:
+                difficultyUI.text = "Hard";
+                break;
+            case 3:
+                difficultyUI.text = "8-Way";
+                break;
+        }
+    }
+
     public void ToggleUI(bool isUIOn)
     {
         if (isUIOn)
